@@ -1,7 +1,5 @@
 $changes = Get-Content C:\Users\jdkaufman\GitHub\adventofcode2018\jdkaufman\Day1\input.txt 
 
-$changes = +3, +3, +4, -2, -4
-
 $start = 0 
 
 $result = $start 
@@ -14,12 +12,14 @@ Do{
 
     $result += $changes[$i]
 
+    #Write-Output "result is $result"
+
     $resulthash["$result"] += 1
 
     
     If($i -lt ($changes.length -1)){
 
-        Write-Output $i
+       # Write-Output "i is $i"
 
         $i++
 
@@ -28,7 +28,7 @@ Do{
 
 
 }
-Until(($resulthash.values | Sort-Object -unique) -ne 1)
+Until($resulthash.ContainsValue(2)) 
 
 $value = $($resulthash.Keys.Where({$resulthash[$_] -eq 2}))
 
